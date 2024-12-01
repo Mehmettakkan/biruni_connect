@@ -46,6 +46,7 @@ dependencies:
   url_launcher: ^6.2.5
   webview_flutter: ^4.10.0
   flutter_launcher_icons: ^0.14.1
+  intl: ^0.20.1
 
   # SVG desteği
   flutter_svg: ^2.0.16 # SVG dosyalarını görüntülemek için destek
