@@ -1,30 +1,48 @@
+import 'package:biruni_connect/screens/home/sections/announcements_section_list.dart';
 import 'package:flutter/material.dart';
-import 'package:biruni_connect/shared/widgets/custom_card.dart';
+import 'package:biruni_connect/core/theme/app_text_styles.dart';
+import 'package:biruni_connect/core/utils/extensions/context_extension.dart';
+import 'package:biruni_connect/mock/hero_section_mock.dart';
+import 'package:go_router/go_router.dart';
 
 class AnnouncementsSection extends StatelessWidget {
   const AnnouncementsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
+    const int limitedItems = 4;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Duyurular'),
-        const SizedBox(height: 16),
-        ListView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: 5,
-          itemBuilder: (context, index) => const Padding(
-            padding: EdgeInsets.only(bottom: 8.0),
-            child: CustomCard(
-              type: CustomCardType.info,
-              child: ListTile(
-                title: Text('Duyuru Başlığı'),
-                subtitle: Text('Duyuru içeriği kısa açıklama'),
+        Padding(
+          padding: context.paddingHorizontalS,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Duyurular',
+                style: AppTextStyles.h3(isDark: context.isDark),
               ),
-            ),
+              TextButton(
+                onPressed: () => context.go("/announcements"),
+                style: TextButton.styleFrom(
+                  minimumSize: Size.zero,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+                child: Text(
+                  'Tüm Duyurular',
+                  style: AppTextStyles.bodyMedium(isDark: context.isDark),
+                ),
+              ),
+            ],
           ),
+        ),
+        context.spaceM,
+        AnnouncementsSectionList(
+          items: mockCarouselItems.take(limitedItems).toList(),
         ),
       ],
     );
