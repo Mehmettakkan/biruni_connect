@@ -2,8 +2,6 @@ import 'package:biruni_connect/core/utils/extensions/context_extension.dart';
 import 'package:biruni_connect/mock/announcement_mock.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
-// Stil importları
 import 'package:biruni_connect/core/constants/ui/ui_constants.dart';
 import 'package:biruni_connect/core/theme/app_colors.dart';
 import 'package:biruni_connect/core/theme/app_text_styles.dart';

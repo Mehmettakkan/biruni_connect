@@ -2,7 +2,7 @@ import 'package:biruni_connect/core/constants/ui/ui_constants.dart';
 import 'package:biruni_connect/core/theme/app_colors.dart';
 import 'package:biruni_connect/core/theme/app_text_styles.dart';
 import 'package:biruni_connect/core/utils/extensions/context_extension.dart';
-import 'package:biruni_connect/mock/hero_section_mock.dart';
+import 'package:biruni_connect/mock/announcement_mock.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:go_router/go_router.dart';
@@ -61,7 +61,7 @@ class _HeroSectionState extends State<HeroSection> {
             final item = _filteredItems[index];
 
             return GestureDetector(
-              onTap: () => context.go(item.route),
+              onTap: () => context.push(item.route),
               child: Hero(
                 tag: 'hero_${item.id}',
                 child: Container(

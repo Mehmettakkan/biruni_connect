@@ -2,9 +2,9 @@ import 'package:biruni_connect/core/constants/ui/asset_constants.dart';
 import 'package:biruni_connect/core/constants/ui/ui_constants.dart';
 import 'package:biruni_connect/core/theme/app_colors.dart';
 import 'package:biruni_connect/core/utils/extensions/context_extension.dart';
-import 'package:biruni_connect/screens/home/sections/announcements_section.dart';
-import 'package:biruni_connect/screens/home/sections/hero_section.dart';
-import 'package:biruni_connect/screens/home/sections/quick_links_section.dart';
+import 'package:biruni_connect/screens/home/widgets/announcements_section.dart';
+import 'package:biruni_connect/screens/home/widgets/hero_section.dart';
+import 'package:biruni_connect/screens/home/widgets/quick_links_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

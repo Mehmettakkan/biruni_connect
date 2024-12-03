@@ -1,8 +1,8 @@
-import 'package:biruni_connect/screens/home/sections/announcements_section_list.dart';
+import 'package:biruni_connect/screens/home/widgets/announcements_section_list.dart';
 import 'package:flutter/material.dart';
 import 'package:biruni_connect/core/theme/app_text_styles.dart';
 import 'package:biruni_connect/core/utils/extensions/context_extension.dart';
-import 'package:biruni_connect/mock/hero_section_mock.dart';
+import 'package:biruni_connect/mock/announcement_mock.dart';
 import 'package:go_router/go_router.dart';
 
 class AnnouncementsSection extends StatelessWidget {
@@ -25,7 +25,7 @@ class AnnouncementsSection extends StatelessWidget {
                 style: AppTextStyles.h3(isDark: context.isDark),
               ),
               TextButton(
-                onPressed: () => context.go("/announcements"),
+                onPressed: () => context.push("/announcements"),
                 style: TextButton.styleFrom(
                   minimumSize: Size.zero,
                   padding:

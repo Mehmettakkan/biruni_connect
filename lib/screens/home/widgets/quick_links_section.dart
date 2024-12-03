@@ -1,5 +1,5 @@
 import 'package:biruni_connect/core/constants/ui/ui_constants.dart';
-import 'package:biruni_connect/mock/quick_links_section_mock.dart';
+import 'package:biruni_connect/mock/quick_links_mock.dart';
 import 'package:flutter/material.dart';
 import 'package:biruni_connect/core/theme/app_text_styles.dart';
 import 'package:biruni_connect/core/utils/extensions/context_extension.dart';

@@ -4,7 +4,7 @@ import 'package:biruni_connect/core/theme/app_colors.dart';
 import 'package:biruni_connect/core/theme/app_text_styles.dart';
 import 'package:biruni_connect/core/utils/extensions/context_extension.dart';
 import 'package:biruni_connect/shared/widgets/custom_card.dart';
-import 'package:biruni_connect/mock/hero_section_mock.dart';
+import 'package:biruni_connect/mock/announcement_mock.dart';
 import 'package:intl/intl.dart';
 import 'package:go_router/go_router.dart';
 
@@ -55,7 +55,7 @@ class AnnouncementsSectionList extends StatelessWidget {
 
         return CustomCard(
           type: CustomCardType.outlined,
-          onTap: () => context.go('/announcement/${item.id}'),
+          onTap: () => context.push('/announcements/${item.id}'),
           padding: EdgeInsets.zero,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
