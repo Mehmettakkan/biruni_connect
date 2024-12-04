@@ -1,4 +1,3 @@
-// Slider için kullanılacak veri modeli
 class CarouselItem {
   final String id;
   final String title;
@@ -23,55 +22,55 @@ class CarouselItem {
 final List<CarouselItem> mockCarouselItems = [
   // Duyurular
   CarouselItem(
-    id: 'ann_1',
+    id: 'announcement_1',
     title:
         'Biruni Üniversitesi’nde Duygu Dolu 24 Kasım Öğretmenler Günü Programı',
     description:
         'Biruni Üniversitesi Konferans Salonu, 24 Kasım Öğretmenler Günü kapsamında düzenlenen anlamlı bir kutlama programına ev sahipliği yaptı.',
     imageUrl: 'assets/images/announcements/ogretmenler_gunu.jpg',
-    route: '/announcement/ann_1',
+    route: '/announcements/announcement_1',
     date: DateTime(2024, 8, 15),
     category: 'announcement',
   ),
   CarouselItem(
-    id: 'ann_2',
+    id: 'announcement_2',
     title:
         'Biruni Üniversitesi Hayvan Deneyleri Yerel Etik Kurulu Başvurulara Açılmıştır',
     description:
         'Biruni Üniversitesi olarak, bilimsel araştırmaların etik standartlara uygun şekilde yürütülmesi ve hayvan refahının korunması en önemli önceliklerimizdendir. ',
     imageUrl: 'assets/images/announcements/hayvan_deneyleri.jpg',
-    route: '/announcement/ann_2',
+    route: '/announcements/announcement_2',
     date: DateTime(2024, 9, 1),
     category: 'announcement',
   ),
   CarouselItem(
-    id: 'ann_3',
+    id: 'announcement_3',
     title:
         'Üniversitemiz Kariyer Merkezi , Sürekli Eğitim Merkezi (KARSEM) ve Teknopark işbirliği ile yapılması planlanan Girişimcilik ve Ön Kuluçka Eğitimi Başlıyor.',
     description:
         'Tekno Park ve sektörün deneyimli eğitmenleri ile girişimcilere özel yepyeni bir program başlıyor. İş dünyasına güçlü bir adım atmak ve kendi girişiminizi kurmak için ihtiyacınız olan tüm bilgi ve becerileri kazanın. 6 temel modülle kariyerinize ve girişiminize değer katın!',
     imageUrl: 'assets/images/announcements/girisimcilik.jpg',
-    route: '/announcement/ann_3',
+    route: '/announcements/announcement_3',
     date: DateTime(2024, 8, 20),
     category: 'announcement',
   ),
   CarouselItem(
-    id: 'ann_4',
+    id: 'announcement_4',
     title:
         'Biruni Üniversitesi Akademisyenleri Dünyanın En Etkili Bilim İnsanları Listesinde.',
     description: '',
     imageUrl: 'assets/images/announcements/akademisyenler.jpg',
-    route: '/announcement/ann_4',
+    route: '/announcements/announcement_4',
     date: DateTime(2024, 6, 1),
     category: 'announcement',
   ),
   CarouselItem(
-    id: 'ann_5',
+    id: 'announcement_5',
     title: 'Biruni ve Trinity College Dublin Araştırma Diyalogları',
     description:
         'Eczacılık ve farmasötik bilimler alanında uzman olan Prof. Dr. Sheridan, araştırmacılarımız ve öğretim üyelerimizle bir araya gelerek onların çalışma ve araştırma alanlarını dinledi. Görüşmelerde, Biruni Üniversitesi ve Trinity College Dublin arasında birçok disiplinde işbirliği potansiyeli vurgulandı.',
     imageUrl: 'assets/images/announcements/toplanti.jpg',
-    route: '/announcement/ann_5',
+    route: '/announcements/announcement_5',
     date: DateTime(2024, 7, 1),
     category: 'announcement',
   ),
