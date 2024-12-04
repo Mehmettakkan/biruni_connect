@@ -10,7 +10,12 @@
 	</array>
 	
 
-	<key>io.flutter.embedded_views_preview</key>
+	
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>Bu uygulama kampüs içindeki konumunuzu göstermek için konum bilgisine ihtiyaç duymaktadır.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Bu uygulama kampüs içindeki konumunuzu göstermek için konum bilgisine ihtiyaç duymaktadır.</string>
+    <key>io.flutter.embedded_views_preview</key>
 	<true/>
 
 	<key>CFBundleDevelopmentRegion</key>

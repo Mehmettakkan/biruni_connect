@@ -47,7 +47,10 @@ dependencies:
   webview_flutter: ^4.10.0
   flutter_launcher_icons: ^0.14.1
   intl: ^0.20.1
-
+  google_maps_flutter: ^2.10.0
+  permission_handler: ^11.3.1
+  geolocator: ^13.0.2
+  
   # SVG desteği
   flutter_svg: ^2.0.16 # SVG dosyalarını görüntülemek için destek
 
