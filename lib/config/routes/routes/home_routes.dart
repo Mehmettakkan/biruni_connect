@@ -1,7 +1,8 @@
 // lib/config/routes/routes/home_routes.dart
 
 import 'package:biruni_connect/screens/home/home_screen.dart';
-import 'package:biruni_connect/screens/home/sections/announcement_detail.dart';
+import 'package:biruni_connect/screens/home/widgets/announcement_detail.dart';
+import 'package:biruni_connect/screens/home/widgets/announcements_section_list.dart';
 import 'package:go_router/go_router.dart';
 import '../route_names.dart';
 
@@ -13,12 +14,20 @@ List<RouteBase> getHomeRoutes() {
       routes: [
         // Duyurular için route
         GoRoute(
-          path: 'announcement/:id',
+          path: '/announcements',
+          builder: (context, state) => const AnnouncementsSectionList(
+            isFullScreen: true,
+          ),
+        ),
+
+        GoRoute(
+          path: 'announcements/:id',
           builder: (context, state) {
-            final announcementId = state.pathParameters['id'];
+            final announcementId = state.pathParameters['id']!; // ! ekledik
             return AnnouncementDetail(id: announcementId);
           },
         ),
+
         /*// Etkinlikler için route
         GoRoute(
           path: 'event/:id',
