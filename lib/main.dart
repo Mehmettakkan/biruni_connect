@@ -1,9 +1,11 @@
 import 'package:biruni_connect/config/routes/app_router.dart';
 import 'package:biruni_connect/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('tr_TR', null);
   runApp(const BiruniConnect());
 }
 
