@@ -11,6 +11,19 @@ class RoutePath {
   static const String events = '/events';
   static const String facilities = '/facilities';
 
+  // Home detay sayfaları
+  static const String announcementDetail = '/announcement';
+  static const String eventDetail = '/event';
+  static const String newsDetail = '/news';
+
+  // Campus detay sayfaları
+  static const String buildingDetail = '/building';
+  static const String facilityDetail = '/facility';
+
+  // University detay sayfaları
+  static const String departmentDetail = '/department';
+  static const String contactInfo = '/contact';
+
   /* // Üniversite alt sayfaları
   static const String about = 'about';
   static const String mission = 'mission';
@@ -27,14 +40,10 @@ class RoutePath {
   static const String library = 'library';
 
   // Etkinlikler alt sayfaları
-  static const String eventDetails = 'details';
   static const String calendar = 'calendar';
 
   // Olanaklar alt sayfaları
   static const String sports = 'sports';
   static const String health = 'health';
   static const String dining = 'dining'; */
-
-  // Duyuru detay sayfası için path
-  // static const String announcementDetails = 'announcement/:id';
 }
