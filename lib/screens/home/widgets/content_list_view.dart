@@ -1,28 +1,32 @@
+// content_list_view.dart
+
 import 'package:flutter/material.dart';
 import 'package:biruni_connect/core/constants/ui/ui_constants.dart';
 import 'package:biruni_connect/core/theme/app_colors.dart';
 import 'package:biruni_connect/core/theme/app_text_styles.dart';
 import 'package:biruni_connect/core/utils/extensions/context_extension.dart';
 import 'package:biruni_connect/shared/widgets/custom_card.dart';
-import 'package:biruni_connect/mock/announcement_mock.dart';
+import 'package:biruni_connect/mock/announcements_mock.dart';
+import 'package:biruni_connect/mock/events_mock.dart';
+import 'package:biruni_connect/mock/news_mock.dart';
 import 'package:intl/intl.dart';
 import 'package:go_router/go_router.dart';
 
-class AnnouncementsSectionList extends StatelessWidget {
-  final List<CarouselItem>? items;
+class ContentListView extends StatelessWidget {
+  final String contentType; // 'announcement', 'event', 'news'
   final bool isFullScreen;
 
-  const AnnouncementsSectionList({
+  const ContentListView({
     super.key,
-    this.items,
+    required this.contentType,
     this.isFullScreen = false,
   });
 
-  Color _getCategoryColor(String category, bool isDark) {
-    switch (category) {
-      case 'announcement':
+  Color _getCategoryColor(String type, bool isDark) {
+    switch (type) {
+      case 'announcements':
         return isDark ? AppColors.primaryDark : AppColors.primary;
-      case 'event':
+      case 'events':
         return isDark ? AppColors.secondaryDark : AppColors.secondary;
       case 'news':
         return isDark ? AppColors.accentDark : AppColors.accent;
@@ -31,10 +35,37 @@ class AnnouncementsSectionList extends StatelessWidget {
     }
   }
 
+  String _getTitle(String type) {
+    switch (type) {
+      case 'announcements':
+        return 'Tüm Duyurular';
+      case 'events':
+        return 'Tüm Etkinlikler';
+      case 'news':
+        return 'Tüm Haberler';
+      default:
+        return 'İçerikler';
+    }
+  }
+
+  List<dynamic> _getContentItems() {
+    switch (contentType) {
+      case 'announcements':
+        return AnnouncementsMock.announcements;
+      case 'events':
+        return EventsMock.events;
+      case 'news':
+        return NewsMock.news;
+      default:
+        return [];
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final isDark = context.isDark;
-    final displayItems = items ?? mockCarouselItems;
+    final displayItems = _getContentItems();
+    final categoryColor = _getCategoryColor(contentType, isDark);
 
     Widget listContent = ListView.separated(
       shrinkWrap: !isFullScreen,
@@ -50,12 +81,11 @@ class AnnouncementsSectionList extends StatelessWidget {
           SizedBox(height: UIConstants.spacingM),
       itemBuilder: (context, index) {
         final item = displayItems[index];
-        final categoryColor = _getCategoryColor(item.category, isDark);
         final date = item.date;
 
         return CustomCard(
           type: CustomCardType.outlined,
-          onTap: () => context.push('/announcements/${item.id}'),
+          onTap: () => context.push('/${contentType}/${item.id}'),
           padding: EdgeInsets.zero,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -130,7 +160,7 @@ class AnnouncementsSectionList extends StatelessWidget {
       return Scaffold(
         appBar: AppBar(
           title: Text(
-            'Tüm Duyurular',
+            _getTitle(contentType),
             style: AppTextStyles.h3(isDark: isDark),
           ),
         ),
