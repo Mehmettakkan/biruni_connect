@@ -2,7 +2,9 @@ import 'package:biruni_connect/core/constants/ui/ui_constants.dart';
 import 'package:biruni_connect/core/theme/app_colors.dart';
 import 'package:biruni_connect/core/theme/app_text_styles.dart';
 import 'package:biruni_connect/core/utils/extensions/context_extension.dart';
-import 'package:biruni_connect/mock/announcement_mock.dart';
+import 'package:biruni_connect/mock/announcements_mock.dart';
+import 'package:biruni_connect/mock/events_mock.dart';
+import 'package:biruni_connect/mock/news_mock.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:go_router/go_router.dart';
@@ -16,12 +18,19 @@ class HeroSection extends StatefulWidget {
 
 class _HeroSectionState extends State<HeroSection> {
   int _currentIndex = 0;
-  String _selectedCategory = 'announcement';
+  String _selectedCategory = 'announcements';
 
-  List<CarouselItem> get _filteredItems {
-    return mockCarouselItems
-        .where((item) => item.category == _selectedCategory)
-        .toList();
+  List<dynamic> get _filteredItems {
+    switch (_selectedCategory) {
+      case 'announcements':
+        return AnnouncementsMock.announcements;
+      case 'events':
+        return EventsMock.events;
+      case 'news':
+        return NewsMock.news;
+      default:
+        return [];
+    }
   }
 
   @override
@@ -36,14 +45,14 @@ class _HeroSectionState extends State<HeroSection> {
             children: [
               _CategoryButton(
                 title: 'Duyurular',
-                isSelected: _selectedCategory == 'announcement',
-                onTap: () => _updateCategory('announcement'),
+                isSelected: _selectedCategory == 'announcements',
+                onTap: () => _updateCategory('announcements'),
               ),
               context.horizontalSpaceS,
               _CategoryButton(
                 title: 'Etkinlikler',
-                isSelected: _selectedCategory == 'event',
-                onTap: () => _updateCategory('event'),
+                isSelected: _selectedCategory == 'events',
+                onTap: () => _updateCategory('events'),
               ),
               context.horizontalSpaceS,
               _CategoryButton(
@@ -61,7 +70,7 @@ class _HeroSectionState extends State<HeroSection> {
             final item = _filteredItems[index];
 
             return GestureDetector(
-              onTap: () => context.push(item.route),
+              onTap: () => context.push('/${_selectedCategory}/${item.id}'),
               child: Hero(
                 tag: 'hero_${item.id}',
                 child: Container(
@@ -110,12 +119,12 @@ class _HeroSectionState extends State<HeroSection> {
                                   vertical: UIConstants.paddingXS,
                                 ),
                                 decoration: BoxDecoration(
-                                  color:
-                                      _getCategoryColor(item.category, isDark),
+                                  color: _getCategoryColor(
+                                      _selectedCategory, isDark),
                                   borderRadius: context.radiusM,
                                 ),
                                 child: Text(
-                                  _getCategoryText(item.category),
+                                  _getCategoryText(_selectedCategory),
                                   style: AppTextStyles.caption(
                                     color: AppColors.surface,
                                   ),
@@ -186,7 +195,6 @@ class _HeroSectionState extends State<HeroSection> {
     );
   }
 
-  // Diğer metodlar aynı kalacak
   void _updateCategory(String category) {
     setState(() {
       _selectedCategory = category;
@@ -196,9 +204,9 @@ class _HeroSectionState extends State<HeroSection> {
 
   Color _getCategoryColor(String category, bool isDark) {
     switch (category) {
-      case 'announcement':
+      case 'announcements':
         return isDark ? AppColors.primaryDark : AppColors.primary;
-      case 'event':
+      case 'events':
         return isDark ? AppColors.secondaryDark : AppColors.secondary;
       case 'news':
         return isDark ? AppColors.accentDark : AppColors.accent;
@@ -209,9 +217,9 @@ class _HeroSectionState extends State<HeroSection> {
 
   String _getCategoryText(String category) {
     switch (category) {
-      case 'announcement':
+      case 'announcements':
         return 'DUYURU';
-      case 'event':
+      case 'events':
         return 'ETKİNLİK';
       case 'news':
         return 'HABER';
