@@ -1,8 +1,10 @@
+// home_screen.dart
+
 import 'package:biruni_connect/core/constants/ui/asset_constants.dart';
 import 'package:biruni_connect/core/constants/ui/ui_constants.dart';
 import 'package:biruni_connect/core/theme/app_colors.dart';
 import 'package:biruni_connect/core/utils/extensions/context_extension.dart';
-import 'package:biruni_connect/screens/home/widgets/announcements_section.dart';
+import 'package:biruni_connect/screens/home/widgets/content_list_item.dart'; // Yeni import
 import 'package:biruni_connect/screens/home/widgets/hero_section.dart';
 import 'package:biruni_connect/screens/home/widgets/quick_links_section.dart';
 import 'package:flutter/material.dart';
@@ -70,7 +72,25 @@ class HomeScreen extends StatelessWidget {
               context.spaceM,
               const QuickLinksSection(),
               context.spaceM,
-              const AnnouncementsSection(),
+              // AnnouncementsSection yerine ContentListItem kullanımı:
+              const ContentListItem(
+                contentType: 'announcements',
+                title: 'Duyurular',
+                viewAllText: 'Tüm Duyurular',
+              ),
+              context.spaceM,
+              // İsterseniz diğer content type'ları da ekleyebilirsiniz:
+              const ContentListItem(
+                contentType: 'events',
+                title: 'Etkinlikler',
+                viewAllText: 'Tüm Etkinlikler',
+              ),
+              context.spaceM,
+              const ContentListItem(
+                contentType: 'news',
+                title: 'Haberler',
+                viewAllText: 'Tüm Haberler',
+              ),
             ])),
           ))
         ],
