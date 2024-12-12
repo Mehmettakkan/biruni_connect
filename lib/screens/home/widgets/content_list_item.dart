@@ -1,17 +1,25 @@
-import 'package:biruni_connect/screens/home/widgets/announcements_section_list.dart';
 import 'package:flutter/material.dart';
 import 'package:biruni_connect/core/theme/app_text_styles.dart';
 import 'package:biruni_connect/core/utils/extensions/context_extension.dart';
-import 'package:biruni_connect/mock/announcement_mock.dart';
 import 'package:go_router/go_router.dart';
+import 'content_list_view.dart';
 
-class AnnouncementsSection extends StatelessWidget {
-  const AnnouncementsSection({super.key});
+class ContentListItem extends StatelessWidget {
+  final String contentType; // 'announcement', 'event', 'news'
+  final int limitedItems;
+  final String title;
+  final String viewAllText;
+
+  const ContentListItem({
+    super.key,
+    required this.contentType,
+    this.limitedItems = 4,
+    required this.title,
+    required this.viewAllText,
+  });
 
   @override
   Widget build(BuildContext context) {
-    const int limitedItems = 4;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -21,19 +29,21 @@ class AnnouncementsSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Duyurular',
+                title,
                 style: AppTextStyles.h3(isDark: context.isDark),
               ),
               TextButton(
-                onPressed: () => context.push("/announcements"),
+                onPressed: () => context.push("/$contentType"),
                 style: TextButton.styleFrom(
                   minimumSize: Size.zero,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 8,
+                  ),
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
                 child: Text(
-                  'Tüm Duyurular',
+                  viewAllText,
                   style: AppTextStyles.bodyMedium(isDark: context.isDark),
                 ),
               ),
@@ -41,8 +51,8 @@ class AnnouncementsSection extends StatelessWidget {
           ),
         ),
         context.spaceM,
-        AnnouncementsSectionList(
-          items: mockCarouselItems.take(limitedItems).toList(),
+        ContentListView(
+          contentType: contentType,
         ),
       ],
     );
