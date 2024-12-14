@@ -1,3 +1,4 @@
+import 'package:biruni_connect/screens/events/widgets/event_details_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:biruni_connect/config/routes/route_names.dart';
 import 'package:biruni_connect/screens/events/events_screen.dart';
@@ -7,8 +8,15 @@ List<RouteBase> getEventsRoutes() {
     GoRoute(
       path: RoutePath.events,
       builder: (context, state) => const EventsScreen(),
-      /* routes: [
+      routes: [
         GoRoute(
+          path: ':id',
+          builder: (context, state) {
+            final eventId = state.pathParameters['id']!;
+            return EventDetailsView(id: eventId);
+          },
+        ),
+        /* GoRoute(
           path: 'detail/:eventId',
           builder: (context, state) {
             final eventId = state.pathParameters['eventId'];
@@ -32,8 +40,8 @@ List<RouteBase> getEventsRoutes() {
             final eventId = state.pathParameters['eventId'];
             return EventRegistrationScreen(eventId: eventId);
           },
-        ),
-      ], */
+        ),*/
+      ],
     ),
   ];
 }
