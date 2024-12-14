@@ -1,8 +1,6 @@
-// lib/config/routes/routes/home_routes.dart
-
 import 'package:biruni_connect/screens/home/home_screen.dart';
-import 'package:biruni_connect/screens/home/widgets/announcement_detail.dart';
-import 'package:biruni_connect/screens/home/widgets/announcements_section_list.dart';
+import 'package:biruni_connect/screens/home/widgets/content_list_view.dart';
+import 'package:biruni_connect/screens/home/widgets/content_details_view.dart';
 import 'package:go_router/go_router.dart';
 import '../route_names.dart';
 
@@ -12,38 +10,37 @@ List<RouteBase> getHomeRoutes() {
       path: RoutePath.home,
       builder: (context, state) => const HomeScreen(),
       routes: [
-        // Duyurular için route
+        // Duyurular için routes
         GoRoute(
-          path: '/announcements',
-          builder: (context, state) => const AnnouncementsSectionList(
+          path: 'announcements',
+          builder: (context, state) => const ContentListView(
+            contentType: 'announcements',
             isFullScreen: true,
           ),
         ),
-
         GoRoute(
           path: 'announcements/:id',
           builder: (context, state) {
-            final announcementId = state.pathParameters['id']!; // ! ekledik
-            return AnnouncementDetail(id: announcementId);
+            final id = state.pathParameters['id']!;
+            return ContentDetailsView(id: id);
           },
         ),
 
-        /*// Etkinlikler için route
+        // Haberler için routes
         GoRoute(
-          path: 'event/:id',
-          builder: (context, state) {
-            final eventId = state.pathParameters['id'];
-            return EventDetailScreen(id: eventId);
-          },
+          path: 'news',
+          builder: (context, state) => const ContentListView(
+            contentType: 'news',
+            isFullScreen: true,
+          ),
         ),
-        // Haberler için route
         GoRoute(
           path: 'news/:id',
           builder: (context, state) {
-            final newsId = state.pathParameters['id'];
-            return NewsDetailScreen(id: newsId);
+            final id = state.pathParameters['id']!;
+            return ContentDetailsView(id: id);
           },
-        ),*/
+        ),
       ],
     ),
   ];
