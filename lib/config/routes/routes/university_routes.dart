@@ -7,20 +7,22 @@ List<RouteBase> getUniversityRoutes() {
     GoRoute(
       path: RoutePath.university,
       builder: (context, state) => const UniversityScreen(),
-      /* routes: [
-        GoRoute(
-          path: 'about',
-          builder: (context, state) => const AboutScreen(),
+      routes: [
+        /* GoRoute(
+          path: 'faculty/:id',
+          builder: (context, state) {
+            final facultyId = state.pathParameters['id']!;
+            return FacultyDetailScreen(facultyId: facultyId);
+          },
         ),
         GoRoute(
-          path: 'mission',
-          builder: (context, state) => const MissionScreen(),
-        ),
-        GoRoute(
-          path: 'management',
-          builder: (context, state) => const ManagementScreen(),
-        ),
-      ], */
+          path: 'program/:id',
+          builder: (context, state) {
+            final programId = state.pathParameters['id']!;
+            return ProgramDetailScreen(programId: programId);
+          },
+        ), */
+      ],
     ),
   ];
 }
