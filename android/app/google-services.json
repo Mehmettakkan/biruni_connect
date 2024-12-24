@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1010821090386",
+    "project_id": "biruni-connect-a375b",
+    "storage_bucket": "biruni-connect-a375b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010821090386:android:49d6f54e7d0bf426f5638b",
+        "android_client_info": {
+          "package_name": "com.biruni.connect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1010821090386-2dt6r59tlrg0a1maok2jn3prbc124ncu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.biruni.connect",
+            "certificate_hash": "b36a850a7d734e41486aa3357676aec9785d3354"
+          }
+        },
+        {
+          "client_id": "1010821090386-loaaev00p7flcfrcod0o32ihnvod182v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPlv9QWl6uQMILFecC65yXrRDXjina-fs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1010821090386-loaaev00p7flcfrcod0o32ihnvod182v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1010821090386-rsfuetbqu4svo1smidbnr8b5ovdv8pfg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.biruni.connect"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -8,8 +8,16 @@
 		<string>https</string>
 		<string>http</string>
 	</array>
-	
 
+	<key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>com.googleusercontent.apps.1010821090386-rsfuetbqu4svo1smidbnr8b5ovdv8pfg</string>
+            </array>
+        </dict>
+    </array>
 	
 	<key>NSLocationWhenInUseUsageDescription</key>
     <string>Bu uygulama kampüs içindeki konumunuzu göstermek için konum bilgisine ihtiyaç duymaktadır.</string>
@@ -17,6 +25,8 @@
     <string>Bu uygulama kampüs içindeki konumunuzu göstermek için konum bilgisine ihtiyaç duymaktadır.</string>
     <key>io.flutter.embedded_views_preview</key>
 	<true/>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Takviminize ekleyebilmek için takvim izni gerekiyor</string>
 
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
