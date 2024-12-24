@@ -14,10 +14,10 @@ class CampusBuildingCard extends StatelessWidget {
   final VoidCallback onTap; // Karta tıklandığında çalışacak fonksiyon
 
   const CampusBuildingCard({
-    Key? key,
+    super.key,
     required this.building,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
