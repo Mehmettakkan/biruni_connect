@@ -1,4 +1,4 @@
-package com.example.biruni_connect
+package com.biruni.connect
 
 import io.flutter.embedding.android.FlutterActivity
 
