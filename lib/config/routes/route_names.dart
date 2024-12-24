@@ -20,4 +20,9 @@ class RoutePath {
   // Content detay sayfaları
   static const String announcements = '/announcements';
   static const String news = '/news';
+
+  // Auth paths
+  static const String login = '/login';
+  static const String register = '/register';
+  static const String profile = '/profile';
 }
