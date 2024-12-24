@@ -18,11 +18,11 @@ class CampusMapSection extends StatefulWidget {
   final bool isFullScreen; // Tam ekran modunda gösterilip gösterilmeyeceği
 
   const CampusMapSection({
-    Key? key,
+    super.key,
     required this.buildings,
     required this.onBuildingSelected,
     this.isFullScreen = false,
-  }) : super(key: key);
+  });
 
   @override
   State<CampusMapSection> createState() => _CampusMapSectionState();
