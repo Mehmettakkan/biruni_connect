@@ -1,90 +1,125 @@
-name: biruni_connect
-description: "A new Flutter project."
-publish_to: "none" # Bu projenin pub.dev'e yayınlanmayacağını belirtir.
+# Projenin temel bilgileri
+name: biruni_connect  # Uygulama adı
+description: "A new Flutter project."  # Proje açıklaması
+publish_to: "none"  # Projenin pub.dev'e yayınlanmayacağını belirtir
 
-version: 1.0.0+1 # Uygulamanın sürüm numarası (major.minor.patch+build)
+# Uygulama sürüm numarası (major.minor.patch+build numarası)
+version: 1.0.0+1
 
+# Flutter SDK ve diğer gereksinimler için minimum sürüm gereksinimleri
 environment:
-  sdk: ^3.5.3 # Flutter SDK sürümü için minimum gereksinimler.
+  sdk: ^3.5.3  # Minimum Flutter SDK sürümü
 
+# Projenin bağımlılıkları (dependencies)
 dependencies:
   flutter:
-    sdk: flutter # Flutter SDK'sını belirtir.
+    sdk: flutter  # Flutter SDK'sı
 
-  # State Management (Durum yönetimi için kullanılan paketler)
-  flutter_bloc: ^8.1.3 # Flutter için BLoC mimarisi
-  bloc: ^8.1.2 # BLoC kütüphanesi (arka plan işlevsellik)
+  # State Management (Durum Yönetimi) Paketleri
+  # BLoC (Business Logic Component) desenini uygulamak için kullanılan paketler
+  flutter_bloc: ^8.1.3  # Flutter uygulamaları için BLoC (Business Logic Component) pattern implementasyonu
+  bloc: ^8.1.2  # BLoC pattern'in temel implementasyonu
 
-  # Dependency Injection (Bağımlılık enjeksiyonu için kullanılan paketler)
-  get_it: ^8.0.2 # Bağımlılık enjeksiyonu yöneticisi
-  injectable: ^2.3.2 # Kod üretiminde bağımlılık enjeksiyonu için yardımcı
+  # Dependency Injection (Bağımlılık Enjeksiyonu) Paketleri
+  # Uygulama genelinde bağımlılıkları yönetmek için kullanılan paketler
+  get_it: ^8.0.2  # Service locator pattern implementasyonu
+  injectable: ^2.3.2  # Dependency injection için kod üretimi sağlayan paket
 
-  # Routing (Sayfa yönlendirmesi için kullanılan paketler)
-  auto_route: ^9.2.2 # Otomatik yönlendirme sağlayan bir yapı
+  # Routing (Sayfa Yönlendirme) Paketleri
+  # Sayfalar arası geçişleri yönetmek için kullanılan paketler
+  auto_route: ^9.2.2  # TypeScript benzeri route tanımlamaları sağlayan paket
 
-  # Network (Ağ bağlantıları için kullanılan paketler)
-  dio: ^5.4.0 # HTTP istekleri için güçlü bir istemci
-  retrofit: ^4.0.3 # REST API entegrasyonu için basitleştirilmiş yapı
-  internet_connection_checker: ^1.0.0+1 # İnternet bağlantı durumu kontrolü
+  # Network (Ağ İşlemleri) Paketleri
+  # API çağrıları ve internet bağlantısı kontrolü için kullanılan paketler
+  dio: ^5.4.0  # HTTP istekleri için güçlü bir istemci
+  retrofit: ^4.0.3  # REST API calls için type-safe HTTP client
+  internet_connection_checker: ^1.0.0+1  # İnternet bağlantısı kontrolü için
 
-  # Local Storage (Yerel veri saklama)
-  shared_preferences: ^2.2.2 # Anahtar-değer tabanlı veri saklama
-  hive_flutter: ^1.1.0 # Hızlı ve basit bir yerel veritabanı çözümü
+  # Local Storage (Yerel Depolama) Paketleri
+  # Verileri cihaz üzerinde saklamak için kullanılan paketler
+  shared_preferences: ^2.2.2  # Key-value pairs şeklinde basit veri depolama
+  hive_flutter: ^1.1.0  # Hızlı, lightweight NoSQL veritabanı
 
-  # Utils (Yardımcı araçlar)
-  dartz: ^0.10.1 # Functional programming araçları (Option, Either gibi)
-  equatable: ^2.0.7 # Nesnelerin karşılaştırılmasını kolaylaştırır
-  json_annotation: ^4.8.1 # JSON serileştirme/deserileştirme desteği
-  freezed_annotation: ^2.4.1 # Immutable veri sınıfları için anotasyon
+  # Utils (Yardımcı Araçlar)
+  # Genel amaçlı yardımcı fonksiyonlar ve araçlar
+  dartz: ^0.10.1  # Functional programming özellikleri
+  equatable: ^2.0.7  # Nesne karşılaştırma işlemlerini kolaylaştırır
+  json_annotation: ^4.8.1  # JSON serialization için annotations
+  freezed_annotation: ^2.4.1  # Immutable sınıflar için annotations
 
-  # Flutter Cupertino Icons (iOS stilinde ikonlar)
-  cupertino_icons: ^1.0.8 # Cupertino tabanlı simgeler
+  # UI Components (Kullanıcı Arayüzü Bileşenleri)
+  cupertino_icons: ^1.0.8  # iOS stil ikonlar
+  flutter_svg: ^2.0.16  # SVG dosyalarını görüntüleme desteği
 
-  # Navigation (Gezinme için alternatif yapı)
-  go_router: ^14.6.1 # URL tabanlı gezinme yapısı
-  carousel_slider: ^5.0.0
-  url_launcher: ^6.2.5
-  webview_flutter: ^4.10.0
-  flutter_launcher_icons: ^0.14.1
-  intl: ^0.20.1
-  google_maps_flutter: ^2.10.0
-  permission_handler: ^11.3.1
-  geolocator: ^13.0.2
+  # Navigation (Gezinme)
+  go_router: ^14.6.1  # URL tabanlı routing çözümü
   
-  # SVG desteği
-  flutter_svg: ^2.0.16 # SVG dosyalarını görüntülemek için destek
+  # Additional Features (Ek Özellikler)
+  carousel_slider: ^5.0.0  # Kaydırılabilir görsel galerisi
+  url_launcher: ^6.2.5  # URL'leri açma işlemleri
+  webview_flutter: ^4.10.0  # In-app web görüntüleyici
+  flutter_launcher_icons: ^0.14.1  # Uygulama ikonu yönetimi
+  intl: ^0.20.1  # Internationalization desteği
+  
+  # Location Services (Konum Servisleri)
+  google_maps_flutter: ^2.10.0  # Google Haritalar entegrasyonu
+  permission_handler: ^11.3.1  # İzin yönetimi
+  geolocator: ^13.0.2  # Konum servisleri
+  
+  # Sharing and Calendar (Paylaşım ve Takvim)
+  share_plus: ^10.1.3  # İçerik paylaşımı
+  add_2_calendar: ^3.0.1  # Takvim entegrasyonu
+  
+  # Firebase Services (Firebase Servisleri)
+  firebase_core: ^3.9.0  # Firebase core fonksiyonları
+  firebase_auth: ^5.3.4  # Firebase kimlik doğrulama
+  google_sign_in: ^6.2.2  # Google ile giriş
+  cloud_firestore: ^5.5.0  # Firebase veritabanı
+  firebase_analytics: ^11.3.6  # Firebase analitik
+  
+  # Icons (İkonlar)
+  font_awesome_flutter: ^10.8.0  # Font Awesome ikonları
 
+# Development Dependencies (Geliştirme Bağımlılıkları)
 dev_dependencies:
   flutter_test:
-    sdk: flutter # Flutter'ın test framework'ü
+    sdk: flutter  # Flutter test framework'ü
 
-  # Code Generation (Kod üretimi için kullanılan araçlar)
-  build_runner: ^2.4.7 # Kod üretimi işlemleri için ana araç
-  auto_route_generator: ^9.0.0 # AutoRoute için kod üretimi
-  injectable_generator: ^2.4.1 # Injectable için kod üretimi
-  json_serializable: ^6.7.1 # JSON işlemleri için kod üretimi
-  freezed: ^2.4.6 # Freezed yapılarını otomatik oluşturur
-  retrofit_generator: ^9.1.5 # Retrofit için kod üretimi
+  # Code Generation (Kod Üretimi)
+  # Otomatik kod üretimi için kullanılan araçlar
+  build_runner: ^2.4.7  # Kod üretimi için temel araç
+  auto_route_generator: ^9.0.0  # Route'lar için kod üretimi
+  injectable_generator: ^2.4.1  # Dependency injection için kod üretimi
+  json_serializable: ^6.7.1  # JSON işlemleri için kod üretimi
+  freezed: ^2.4.6  # Immutable sınıflar için kod üretimi
+  retrofit_generator: ^9.1.5  # API client kod üretimi
 
-  # Linting ve analiz araçları
-  flutter_lints: ^5.0.0 # Flutter için varsayılan lint kuralları
-  very_good_analysis: ^6.0.0 # Ekstra analiz kuralları
+  # Linting and Analysis (Kod Analizi)
+  # Kod kalitesi ve standartları için kullanılan araçlar
+  flutter_lints: ^5.0.0  # Temel lint kuralları
+  very_good_analysis: ^6.0.0  # Gelişmiş analiz kuralları
 
+# Flutter Konfigürasyonu
 flutter:
-  uses-material-design: true # Material Design öğelerini etkinleştirir.
+  uses-material-design: true  # Material Design widget'larını kullanır
 
-  # Uygulamada kullanılan varlıklar
+  # Asset Directories (Varlık Dizinleri)
+  # Uygulamada kullanılacak resim ve diğer dosyaların yolları
   assets:
-    - assets/images/logo/
-    - assets/images/university/
-    - assets/images/announcements/
+    - assets/images/logo/  # Logo dosyaları
+    - assets/images/university/  # Üniversite ile ilgili görseller
+    - assets/images/announcements/  # Duyuru görselleri
+    - assets/images/events/  # Etkinlik görselleri
+    - assets/images/news/  # Haber görselleri
 
+# Flutter App Icon Konfigürasyonu
+# Uygulama ikonu ayarları
 flutter_icons:
-  android: true
-  ios: true
-  image_path: "assets/images/app/logo.png"
-  image_path_android: "assets/images/app/logo.png"
-  image_path_ios: "assets/images/app/logo.png"
-  adaptive_icon_background: "#ffffff" # veya istediğiniz renk
-  adaptive_icon_foreground: "assets/images/app/logo.png"
-  remove_alpha_ios: true
+  android: true  # Android için ikon oluştur
+  ios: true  # iOS için ikon oluştur
+  image_path: "assets/images/app/logo.png"  # Temel ikon dosyası
+  image_path_android: "assets/images/app/logo.png"  # Android için ikon
+  image_path_ios: "assets/images/app/logo.png"  # iOS için ikon
+  adaptive_icon_background: "#ffffff"  # Android adaptif ikon arka plan rengi
+  adaptive_icon_foreground: "assets/images/app/logo.png"  # Android adaptif ikon ön plan
+  remove_alpha_ios: true  # iOS ikonundan alpha kanalını kaldır
