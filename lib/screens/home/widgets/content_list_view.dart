@@ -1,5 +1,3 @@
-// content_list_view.dart
-
 import 'package:flutter/material.dart';
 import 'package:biruni_connect/core/constants/ui/ui_constants.dart';
 import 'package:biruni_connect/core/theme/app_colors.dart';
@@ -7,13 +5,17 @@ import 'package:biruni_connect/core/theme/app_text_styles.dart';
 import 'package:biruni_connect/core/utils/extensions/context_extension.dart';
 import 'package:biruni_connect/shared/widgets/custom_card.dart';
 import 'package:biruni_connect/mock/announcements_mock.dart';
-import 'package:biruni_connect/mock/events_mock.dart';
 import 'package:biruni_connect/mock/news_mock.dart';
 import 'package:intl/intl.dart';
 import 'package:go_router/go_router.dart';
 
+/// Duyuru ve haber listelerini gösteren widget.
+/// Tam ekran veya liste görünümü olarak kullanılabilir.
 class ContentListView extends StatelessWidget {
-  final String contentType; // 'announcement', 'event', 'news'
+  /// İçerik tipi ('announcements' veya 'news')
+  final String contentType;
+
+  /// Tam ekran modunda gösterilip gösterilmeyeceği
   final bool isFullScreen;
 
   const ContentListView({
@@ -22,12 +24,11 @@ class ContentListView extends StatelessWidget {
     this.isFullScreen = false,
   });
 
+  /// İçerik tipine göre kategori rengini belirler
   Color _getCategoryColor(String type, bool isDark) {
     switch (type) {
       case 'announcements':
         return isDark ? AppColors.primaryDark : AppColors.primary;
-      case 'events':
-        return isDark ? AppColors.secondaryDark : AppColors.secondary;
       case 'news':
         return isDark ? AppColors.accentDark : AppColors.accent;
       default:
@@ -35,12 +36,11 @@ class ContentListView extends StatelessWidget {
     }
   }
 
+  /// İçerik tipine göre başlığı belirler
   String _getTitle(String type) {
     switch (type) {
       case 'announcements':
         return 'Tüm Duyurular';
-      case 'events':
-        return 'Tüm Etkinlikler';
       case 'news':
         return 'Tüm Haberler';
       default:
@@ -48,12 +48,11 @@ class ContentListView extends StatelessWidget {
     }
   }
 
+  /// İçerik tipine göre veri listesini getirir
   List<dynamic> _getContentItems() {
     switch (contentType) {
       case 'announcements':
         return AnnouncementsMock.announcements;
-      case 'events':
-        return EventsMock.events;
       case 'news':
         return NewsMock.news;
       default:
@@ -67,8 +66,11 @@ class ContentListView extends StatelessWidget {
     final displayItems = _getContentItems();
     final categoryColor = _getCategoryColor(contentType, isDark);
 
+    // Liste görünümünü oluştur
     Widget listContent = ListView.separated(
+      // Tam ekran modunda değilse içeriğe göre boyutlandır
       shrinkWrap: !isFullScreen,
+      // Tam ekran modunda kaydırmaya izin ver
       physics: isFullScreen
           ? const AlwaysScrollableScrollPhysics()
           : const NeverScrollableScrollPhysics(),
@@ -83,6 +85,7 @@ class ContentListView extends StatelessWidget {
         final item = displayItems[index];
         final date = item.date;
 
+        // Her bir içerik öğesi için kart oluştur
         return CustomCard(
           type: CustomCardType.outlined,
           onTap: () => context.push('/${contentType}/${item.id}'),
@@ -90,6 +93,7 @@ class ContentListView extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              // Tarih göstergesi - Sol taraf
               Container(
                 width: 70,
                 decoration: BoxDecoration(
@@ -116,6 +120,7 @@ class ContentListView extends StatelessWidget {
                   ),
                 ),
               ),
+              // İçerik başlığı - Orta kısım
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.all(UIConstants.paddingM),
@@ -130,6 +135,7 @@ class ContentListView extends StatelessWidget {
                   ),
                 ),
               ),
+              // Detay göstergesi - Sağ taraf
               Padding(
                 padding: EdgeInsets.all(UIConstants.paddingM),
                 child: Column(
@@ -156,6 +162,7 @@ class ContentListView extends StatelessWidget {
       },
     );
 
+    // Tam ekran modunda Scaffold içinde göster
     if (isFullScreen) {
       return Scaffold(
         appBar: AppBar(
@@ -175,6 +182,7 @@ class ContentListView extends StatelessWidget {
       );
     }
 
+    // Normal modda direkt liste görünümünü döndür
     return listContent;
   }
 }

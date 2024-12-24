@@ -4,10 +4,19 @@ import 'package:biruni_connect/core/utils/extensions/context_extension.dart';
 import 'package:go_router/go_router.dart';
 import 'content_list_view.dart';
 
+/// İçerik listesi başlığı ve "Tümünü Gör" butonu ile birlikte
+/// içerik listesini gösteren widget.
 class ContentListItem extends StatelessWidget {
-  final String contentType; // 'announcement', 'event', 'news'
+  /// İçerik tipi ('announcement', 'event', 'news')
+  final String contentType;
+
+  /// Gösterilecek maksimum içerik sayısı
   final int limitedItems;
+
+  /// Başlık metni
   final String title;
+
+  /// "Tümünü Gör" buton metni
   final String viewAllText;
 
   const ContentListItem({
@@ -23,15 +32,18 @@ class ContentListItem extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // Başlık ve "Tümünü Gör" butonu satırı
         Padding(
           padding: context.paddingHorizontalS,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              // Başlık
               Text(
                 title,
                 style: AppTextStyles.h3(isDark: context.isDark),
               ),
+              // Tümünü Gör butonu
               TextButton(
                 onPressed: () => context.push("/$contentType"),
                 style: TextButton.styleFrom(
@@ -40,6 +52,7 @@ class ContentListItem extends StatelessWidget {
                     horizontal: 12,
                     vertical: 8,
                   ),
+                  // Buton boyutunu optimize et
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
                 child: Text(
@@ -50,7 +63,11 @@ class ContentListItem extends StatelessWidget {
             ],
           ),
         ),
+
+        // Boşluk
         context.spaceM,
+
+        // İçerik listesi
         ContentListView(
           contentType: contentType,
         ),
